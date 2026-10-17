@@ -14,6 +14,9 @@
   "author": "Aaron Augustin",
   "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "files": [
     "source",
     "index.js",
@@ -21,11 +24,15 @@
     "LICENSE.md"
   ],
   "keywords": [
-    "game-engine",
-    "2d",
+    "game development",
+    "javascript",
+    "html5",
+    "game engine",
+    "2d games",
     "canvas",
-    "html5-game",
-    "gamedev"
+    "game library",
+    "vex",
+    "vexjs"
   ],
   "scripts": {
     "dev": "serve .",
