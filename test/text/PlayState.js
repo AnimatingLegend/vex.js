@@ -17,8 +17,8 @@ export default class PlayState extends VexState {
     this.descText = new VexText(100, 100, "Click on the block!")
       .setFont("20px Courier New")
       .setBold(true)
-      .setColor("#ffffff")
-      .setAlign("left");
+      .setColor("#ffffff");
+    this.descText.screenCenter();
     this.descText.x = 200;
     this.descText.y = 110;
     this.add(this.descText);
@@ -32,8 +32,8 @@ export default class PlayState extends VexState {
     this.scoreText = new VexText(100, 100, "Score: 0")
       .setFont("20px Courier New")
       .setBold(true)
-      .setColor("#ffffff")
-      .setAlign("left");
+      .setColor("#ffffff");
+    this.scoreText.screenCenter();
     this.scoreText.x = 250;
     this.scoreText.y = 350;
     this.add(this.scoreText);
@@ -47,25 +47,25 @@ export default class PlayState extends VexState {
   update(dt) {
     super.update(dt);
 
-    // TODO: make clickable sprites generic, not hardcoded.
-    const mouseX = VexGlobal.mouse.x;
-    const mouseY = VexGlobal.mouse.y;
-    const clickedBlock =
-      mouseX >= this.block.x &&
-      mouseX <= this.block.x + this.block.width &&
-      mouseY >= this.block.y &&
-      mouseY <= this.block.y + this.block.height;
+    if (VexGlobal.mouse.pressed && VexGlobal.mouse._overlaps(this.block)) {
+      this.holdTimer += dt;
 
-    if (VexGlobal.mouse.justPressed && clickedBlock) {
-      this.particles.x = VexGlobal.mouse.x;
-      this.particles.y = VexGlobal.mouse.y;
-      for (let i = 0; i < 8; i++) {
-        this.particles.emit();
-        this.particles.fadeParticle(0, 2, () => console.log("fade complete"));
+      // Trigger on initial click OR whenever the hold timer expires.
+      if (VexGlobal.mouse.justPressed || this.holdTimer >= this.holdInterval) {
+        this.particles.x = VexGlobal.mouse.x;
+        this.particles.y = VexGlobal.mouse.y;
+        // pi = particle index
+        for (let pi = 0; pi < 8; pi++) {
+          this.particles.emit();
+          this.particles.fadeParticle(0, 2, () => console.log("fade complete"));
+        }
+
+        this.score += 20;
+        this.scoreText.setText(`Score: ${this.score}`);
       }
-
-      this.score += 20;
-      this.scoreText.setText(`Score: ${this.score}`);
+    } else {
+      // Otherwise, reset the timer when the mouse is released or moves off the block.
+      this.holdTimer = 0;
     }
   }
 }

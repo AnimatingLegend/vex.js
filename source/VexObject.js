@@ -120,6 +120,25 @@ export default class VexObject extends VexBasic {
   }
 
   /**
+   * Checks whether an 2D point is in bounds with an object.
+   * @param {Number} x - X coords of the point
+   * @param {Number} y - Y coords of the point
+   * @returns {boolean} - True if the point is in the objects bounds, false otherwise.
+   */
+  containsPoint(x, y) {
+    // px / py = pointX / PointY
+    const px = typeof x === "object" ? x.x : x;
+    const py = typeof x === "object" ? x.y : y;
+
+    return (
+      px >= this.x &&
+      px <= this.x + this.width &&
+      py >= this.y &&
+      py <= this.y + this.height
+    );
+  }
+
+  /**
    * Positions the object at the center of the screen along a specifed axes.
    * @param {String} axes - A string containing the axes to center the object on ("X", "Y", or "XY").
    * @returns {vexObject}

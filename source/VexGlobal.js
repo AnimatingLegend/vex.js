@@ -64,6 +64,9 @@ const VexGlobal = {
       this.pressed = false;
       this.justReleased = true;
     },
+    _overlaps(target) {
+      return target.containsPoint(this.x, this.y);
+    },
     _endFrame() {
       this.justPressed = false;
       this.justReleased = false;
