@@ -10,15 +10,22 @@ import VexSprite from "../../VexSprite.js";
  *  avoid repeated allocations during bursts.
  */
 export default class VexEmitter extends VexGroup {
-  constructor(x, y) {
-    super();
+  constructor(x = 0, y = 0, maxSize) {
+    super(maxSize);
     this.x = x;
     this.y = y;
+
+    this.speedX = { min: -100, max: 100 };
+    this.speedY = { min: -200, max: -50 };
+    this.autoFade = true;
 
     this.particle;
     this.particleColor = "#ffaa00";
     this.particleFade;
     this.particleLifeSpan = 0.6;
+    this.particleAge = 0;
+    this.particleAlpha = 1;
+    this.particleGravity = 400;
   }
 
   // Reuse pooled particles so repeated bursts do not allocate new sprites.
@@ -26,21 +33,30 @@ export default class VexEmitter extends VexGroup {
     const particle = this.recycle(() =>
       new VexSprite(this.x, this.y).makeGraphic(4, 4, this.particleColor),
     );
+    // Call null if pool is capped and all slots are alive.
+    if (!particle) return null;
+
     this.particle = particle;
     particle.color = this.particleColor;
     particle.x = this.x;
     particle.y = this.y;
     particle.lifeSpan = this.particleLifeSpan;
-    particle.age = 0;
-    particle.alpha = 1;
+    particle.age = this.particleAge;
+    particle.alpha = this.particleAlpha;
     // Spread particles horizontally so a burst does not stack in one column.
-    particle.velocity.x = (Math.random() - 0.5) * 200;
+    particle.velocity.x =
+      this.speedX.min + Math.random() * (this.speedX.max - this.speedX.min);
     // Negative y moves upward in canvas coordinates.
-    particle.velocity.y = -Math.random() * 200;
-    this.particleFade = this.fadeParticle();
+    particle.velocity.y =
+      this.speedY.min + Math.random() * (this.speedY.max - this.speedY.min);
+    particle.acceleration.y = this.particleGravity;
   }
 
-  // Fade the current particle, replacing any existing alpha tween.
+  /**
+   * Fade the current particle, replacing any existing alpha tween.
+   * @param {Number} particleAlpha - How transparent a particle can be.
+   * @param {Number} particleDuration - How long a particle stays visible.
+   */
   fadeParticle(particleAlpha = 1, particleDuration = 1, onComplete = null) {
     VexTween.cancelTweensOf(this.particle);
     VexTween.tween(
@@ -57,10 +73,24 @@ export default class VexEmitter extends VexGroup {
     );
   }
 
+  /**
+   * Emits a burst of particles.
+   * @param {Number} count - The number of particles emitted.
+   */
+  burstParticle(count = 10) {
+    // pi = particle index
+    for (let pi = 0; pi < count; pi++) this.emit();
+  }
+
   update(dt) {
     super.update(dt);
+
     this.forEachAlive((particle) => {
       particle.age += dt;
+
+      if (this.autoFade) {
+        particle.alpha = Math.max(0, 1 - particle.age / particle.lifeSpan);
+      }
       if (particle.age >= particle.lifeSpan) particle.kill();
     });
   }

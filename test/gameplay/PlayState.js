@@ -38,7 +38,8 @@ export default class PlayState extends VexState {
     this.levelGravity = 500;
 
     // Add landing particles.
-    this.landingDust = new VexEmitter(0, 0);
+    this.landingDust = new VexEmitter(0, 0, 30);
+    this.landingDust.particleGravity = 300;
     this.landingDust.particleColor = "#714f00";
     this.add(this.landingDust);
 
@@ -123,16 +124,12 @@ export default class PlayState extends VexState {
   }
 
   _landingEffect() {
-    var landingDust = this.landingDust;
-    landingDust.x = this.player.x + this.player.width / 2;
-    landingDust.y = this.player.y + this.player.height;
-    // pi = particle index
-    for (var pi = 0; pi < 6; pi++) {
-      landingDust.emit();
-      landingDust.fadeParticle(0.12, 2.75, () => {
-        console.log("VEX EMITTER: Landing dust emitted.");
-      });
-    }
+    this.landingDust.x = this.player.x + this.player.width / 2;
+    this.landingDust.y = this.player.y + this.player.height;
+    this.landingDust.burstParticle(8);
+    this.landingDust.fadeParticle(0.2, 2.75, () => {
+      console.log("VEX EMITTER: Landing dust emitted.");
+    });
   }
 
   _respawnCharacter() {
