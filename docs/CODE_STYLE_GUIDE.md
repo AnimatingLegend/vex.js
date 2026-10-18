@@ -25,7 +25,7 @@ It is recommended to name your variables and functions with descriptive titles, 
 
 ```js
 // lowerCamelCase should be used for generic vars / functions.
-let playerScore = 0;
+var playerScore = 0;
 function updateMotion(dt) { ... }
 
 // snake_case should ONLY be used for constants.
@@ -39,18 +39,29 @@ const MAX_VELOCITY = 10000;
 
 ### Example:
 
+> [!NOTE]
+>
+> This code snippet was taken from **[`VexEmitter.js`](../source/effects/particles/VexEmitter.js)**.
+
 ```js
 /**
- * @file VexCamera.js
+ * @file VexEmitter.js
  *
- * Scroll offset, zoom, and flash/fade screen effets.
- *  Sprites read `scrollFactor` this to get parallax.
+ * @description Spawns short-lived particles and reuses them through VexGroup recycling to
+ *  avoid repeated allocations during bursts.
  */
-export default class VexCamera  {
-  constructor() { ... }
+export default class VexEmitter extends VexGroup {
+  constructor(x = 0, y = 0, maxSize) { ... }
 
-  // Called when you want the camera to follow a specified object.
-  follow(target, options = {}) { ... }
+  // Reuse pooled particles so repeated bursts do not allocate new sprites.
+  emit() { ... }
+
+  /**
+   * Fade the current particle, replacing any existing alpha tween.
+   * @param {Number} particleAlpha - How transparent a particle can be.
+   * @param {Number} particleDuration - How long a particle stays visible.
+   */
+  fadeParticle(particleAlpha = 1, particleDuration = 1, onComplete = null) { ... }
 }
 ```
 
