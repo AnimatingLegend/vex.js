@@ -1,4 +1,5 @@
 export { default as VexAnimationController } from "./source/animation/VexAnimationController.js";
+export { default as VexAtlas } from "./source/animation/VexAtlas.js";
 export { default as VexEmitter } from "./source/effects/particles/VexEmitter.js";
 export { default as VexTilemap } from "./source/graphics/tile/VexTilemap.js";
 export { default as VexSound } from "./source/sound/VexSound.js";
