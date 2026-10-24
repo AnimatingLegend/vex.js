@@ -18,6 +18,7 @@
     ".": "./index.js"
   },
   "files": [
+    "docs",
     "source",
     "index.js",
     "README.md",
