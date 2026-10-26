@@ -22,7 +22,7 @@ body:
     attributes:
       label: Version
       description: Which version are you running?
-      placeholder: "ex. 1.0.0 or 1.1.0-develop"
+      placeholder: "ex. 1.0.0 or develop-v1.1.0"
     validations:
       required: true
 
