@@ -4,7 +4,7 @@
 >
 > This document is inspired by the [Funkin' Repo Code Style Guide](https://github.com/FunkinCrew/Funkin/blob/main/docs/style-guide.md).
 >
-> Though this project is inspired by [Haxeflixel](https://github.com/HaxeFlixel/flixel), it was written using Node.js and other libraries.
+> Though this project is inspired by [HaxeFlixel](https://github.com/HaxeFlixel/flixel), it was written using Node.js and other libraries.
 
 ## Purpose
 
