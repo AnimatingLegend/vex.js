@@ -16,7 +16,7 @@ export default class VexAtlas {
 
   /**
    * Loads an atlas file and returns the parsed atlas.
-   * @param {string} dataPath - Path to a .xml or .json atlas file.
+   * @param {String} dataPath - Path to a .xml or .json atlas file.
    * @returns {Promise<VexAtlas>} - The parsed atlas.
    */
   static async load(dataPath) {
@@ -29,7 +29,7 @@ export default class VexAtlas {
 
   /**
    * Fetches the atlas file and picks a parser from its extension.
-   * @param {string} dataPath - Path to a .xml or .json atlas file.
+   * @param {String} dataPath - Path to a .xml or .json atlas file.
    * @returns {Promise<VexAtlas>} - A new atlas filled with the parsed frames.
    * @throws {Error} - If the file can't be loaded or isn't .xml or .json.
    */
@@ -57,15 +57,15 @@ export default class VexAtlas {
    * Builds a frame record so `.xml` and `.json` frames share the same shape.
    * Trim offsets default to 0 and the source size defaults to the frame size,
    * which is correct for atlases that don't trim.
-   * @param {string} name - The frame's name, e.g. "idle0003".
-   * @param {number} x - Left edge of the frame on the packed image.
-   * @param {number} y - Top edge of the frame on the packed image.
-   * @param {number} width - Frame width on the packed image.
-   * @param {number} height - Frame height on the packed image.
-   * @param {number} [offsetX=0] - Transparent pixels trimmed from the left.
-   * @param {number} [offsetY=0] - Transparent pixels trimmed from the top.
-   * @param {number} [sourceWidth=width] - Original width before trimming.
-   * @param {number} [sourceHeight=height] - Original height before trimming.
+   * @param {String} name - The frame's name, e.g. "idle0003".
+   * @param {Number} x - Left edge of the frame on the packed image.
+   * @param {Number} y - Top edge of the frame on the packed image.
+   * @param {Number} width - Frame width on the packed image.
+   * @param {Number} height - Frame height on the packed image.
+   * @param {Number} [offsetX=0] - Transparent pixels trimmed from the left.
+   * @param {Number} [offsetY=0] - Transparent pixels trimmed from the top.
+   * @param {Number} [sourceWidth=width] - Original width before trimming.
+   * @param {Number} [sourceHeight=height] - Original height before trimming.
    * @returns {object} - The frame record.
    */
   _makeFrame(
@@ -94,7 +94,7 @@ export default class VexAtlas {
 
   /**
    * Parses Sparrow XML, adding one frame per SubTexture element.
-   * @param {string} text - The raw XML file contents.
+   * @param {String} text - The raw XML file contents.
    * @returns {void}
    */
   _parseXml(text) {
