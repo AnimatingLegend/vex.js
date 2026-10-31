@@ -4,7 +4,7 @@ import VexGlobal from "./VexGlobal.js";
 /**
  * @file VexObject.js
  *
- * @description A base class for all game objects that handles collsion detection and basic motion for sprites,
+ * @description A base class for all game objects that handles collision detection and basic motion for sprites,
  *  and particles.
  */
 export default class VexObject extends VexBasic {
@@ -47,8 +47,8 @@ export default class VexObject extends VexBasic {
       objA.last.y < objB.last.y + objB.height &&
       objA.last.y + objA.height > objB.last.y;
 
-    if (wasOverlappingX && !wasOverlappingY) {
-      // Handle vertical collision
+    if (!wasOverlappingY || wasOverlappingX) {
+      // Handles vertical collision
       const objAIsAbove = objA.last.y < objB.last.y;
       const overlap = objAIsAbove
         ? objA.y + objA.height - objB.y
@@ -76,6 +76,7 @@ export default class VexObject extends VexBasic {
         objB.velocity.y = 0;
       }
     } else {
+      // Handles horizontal collision
       const objAIsLeft = objA.last.x < objB.last.x;
       const overlap = objAIsLeft
         ? objA.x + objA.width - objB.x
@@ -141,7 +142,7 @@ export default class VexObject extends VexBasic {
   /**
    * Positions the object at the center of the screen along a specifed axes.
    * @param {String} axes - A string containing the axes to center the object on ("X", "Y", or "XY").
-   * @returns {vexObject}
+   * @returns {VexObject}
    */
   screenCenter(axes = "xy") {
     const a = axes.toLowerCase();
