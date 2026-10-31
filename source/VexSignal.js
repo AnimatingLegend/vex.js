@@ -35,7 +35,7 @@ export default class VexSignal {
   }
 
   // returns a boolean indicating if there are any listeners registered.
-  get hasItems() {
+  get hasListeners() {
     return this.listeners.length > 0;
   }
 }
