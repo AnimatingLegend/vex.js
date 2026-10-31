@@ -19,9 +19,9 @@ export default class VexEmitter extends VexGroup {
     this.speedY = { min: -200, max: -50 };
     this.autoFade = true;
 
-    this.particle;
+    this.particle = null;
     this.particleColor = "#ffaa00";
-    this.particleFade;
+    this.particleFade = null;
     this.particleLifeSpan = 0.6;
     this.particleAge = 0;
     this.particleAlpha = 1;
@@ -50,10 +50,12 @@ export default class VexEmitter extends VexGroup {
     particle.velocity.y =
       this.speedY.min + Math.random() * (this.speedY.max - this.speedY.min);
     particle.acceleration.y = this.particleGravity;
+    return particle;
   }
 
   /**
    * Fade the current particle, replacing any existing alpha tween.
+   *
    * @param {Number} particleAlpha - How transparent a particle can be.
    * @param {Number} particleDuration - How long a particle stays visible.
    */
@@ -61,10 +63,8 @@ export default class VexEmitter extends VexGroup {
     VexTween.cancelTweensOf(this.particle);
     VexTween.tween(
       this.particle,
-      {
-        alpha: particleAlpha,
-        duration: particleDuration,
-      },
+      { alpha: particleAlpha },
+      particleDuration,
       this.particleLifeSpan,
       {
         ease: VexEase.quadOut,
@@ -89,7 +89,10 @@ export default class VexEmitter extends VexGroup {
       particle.age += dt;
 
       if (this.autoFade) {
-        particle.alpha = Math.max(0, 1 - particle.age / particle.lifeSpan);
+        particle.alpha = Math.max(
+          0,
+          (1 - particle.age / particle.lifeSpan) * this.particleAlpha,
+        );
       }
       if (particle.age >= particle.lifeSpan) particle.kill();
     });
