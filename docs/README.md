@@ -53,6 +53,8 @@ Every `VexClass`, with its properties and methods:
 - **[`VexEmitter`](./API/VexEmitter.md)**: Particle Bursts.
 - **[`VexTween`](./API/VexTween.md)** / **[`VexEase`](./API/VexEase.md)**: Animating Properties over time.
 - **[`VexSignal`](./API/VexSignal.md)**: Events
+- **[`VexTimer`](./API/VexTimer.md)**:
+- **[`VexTimerManager`](./API/VexTimerManager.md)**:
 
 ## [Guides](./GUIDES/)
 
@@ -62,6 +64,7 @@ Short walkthroughs for common engine tasks:
 - **[Particle Bursts](./GUIDES/platormer-collision.md)**: Landing dust, Hit Sparks, & Explosions.
 - **[Camera follow Modes & Transitions](./GUIDES/camera-modes-n-transitions.md)**: Locked & Smooth cameras, Fades & Flashes.
 - **[Sprite Atlases](./GUIDES/sprite-atlases)**: Load an atlas and play animations frame-by-frame.
+- **[Timers](./GUIDES/timers.md)**:
 
 ## Contributing
 
