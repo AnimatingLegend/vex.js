@@ -1,9 +1,9 @@
-import VexBasic from "./VexBasic.js";
+import VexBasic from "../core/VexBasic.js";
 
 /**
  * @file VexGroup.js
  *
- * Holds game objects and forwards their lifecycle calls.
+ * @description Holds game objects and forwards their lifecycle calls.
  * Recycling members lets effects reuse objects instead of allocating new ones repeatedly.
  */
 export default class VexGroup extends VexBasic {

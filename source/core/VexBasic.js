@@ -1,7 +1,7 @@
 /**
  * @file VexBasic.js
  *
- * Base class for objects managed by the game loop.
+ * @description Base class for objects managed by the game loop.
  * Empty lifecycle hooks let subclasses implement only the behavior they need.
  */
 export default class VexBasic {

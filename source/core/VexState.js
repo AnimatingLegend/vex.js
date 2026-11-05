@@ -1,10 +1,10 @@
 import VexBasic from "./VexBasic.js";
-import VexGroup from "./VexGroup.js";
+import VexGroup from "../objects/VexGroup.js";
 
 /**
  * @file VexState.js
  *
- * Represents a game screen or scene. A root group centralizes object updates
+ * @description Represents a game screen or scene. A root group centralizes object updates
  *  and drawing, while subclasses provide state-specific setup.
  */
 export default class VexState extends VexBasic {

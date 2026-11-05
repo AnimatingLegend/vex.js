@@ -1,7 +1,7 @@
 /**
  * @file VexCamera.js
  *
- * Controls world scrolling, zoom, and screen fades.
+ * @description Controls world scrolling, zoom, and screen fades.
  * Keeping camera movement separate lets objects use different scroll factors for parallax.
  */
 export default class VexCamera {

@@ -3,7 +3,7 @@ import VexEase from "./VexEase.js";
 /**
  * @file VexTween.js
  *
- * Animates object properties over time.
+ * @description Animates object properties over time.
  * A shared manager lets the game advance active tweens centrally on each update.
  */
 class VexTween {

@@ -1,10 +1,10 @@
-import VexBasic from "../../VexBasic.js";
-import VexGlobal from "../../VexGlobal.js";
+import VexBasic from "../../core/VexBasic.js";
+import VexGlobal from "../../core/VexGlobal.js";
 
 /**
  * @file VexTilemap.js
  *
- * Loads CSV tile data and draws only the visible portion of a map to keep
+ * @description Loads CSV tile data and draws only the visible portion of a map to keep
  *  rendering costs low for large levels.
  */
 export default class VexTilemap extends VexBasic {

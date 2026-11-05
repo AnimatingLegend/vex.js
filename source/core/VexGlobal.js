@@ -1,9 +1,9 @@
-import VexSound from "./sound/VexSound.js";
+import VexSound from "../sound/VexSound.js";
 
 /**
  * @file VexGlobal.js
  *
- * Shared access to input, screen size, the active camera, and cached assets.
+ * @description Shared access to input, screen size, the active camera, and cached assets.
  * One object keeps these resources available across engine modules.
  */
 const VexGlobal = {

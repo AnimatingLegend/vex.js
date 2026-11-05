@@ -1,11 +1,11 @@
-import VexTween from "./tweens/VexTween.js";
-import VexCamera from "./VexCamera.js";
+import VexTween from "../utils/tweens/VexTween.js";
+import VexCamera from "../objects/VexCamera.js";
 import VexGlobal from "./VexGlobal.js";
 
 /**
  * @file VexGame.js
  *
- * Runs the game loop and coordinates updates and drawing. Fixed-step updates
+ * @description Runs the game loop and coordinates updates and drawing. Fixed-step updates
  *  keep game behavior consistent across different display frame rates.
  */
 export default class VexGame {

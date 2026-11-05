@@ -1,5 +1,5 @@
-import VexBasic from "./VexBasic.js";
-import VexGlobal from "./VexGlobal.js";
+import VexBasic from "../core/VexBasic.js";
+import VexGlobal from "../core/VexGlobal.js";
 
 /**
  * @file VexObject.js

@@ -1,9 +1,9 @@
-import VexTween from "../tweens/VexTween.js";
+import VexTween from "../utils/tweens/VexTween.js";
 
 /**
  * @file VexSound.js
  *
- * Wraps browser audio with playback controls and fades so music and effects
+ * @description Wraps browser audio with playback controls and fades so music and effects
  *  share one consistent interface.
  */
 export default class VexSound {
