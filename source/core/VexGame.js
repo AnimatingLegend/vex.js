@@ -1,6 +1,7 @@
-import VexTween from "../utils/tweens/VexTween.js";
-import VexCamera from "../objects/VexCamera.js";
 import VexGlobal from "./VexGlobal.js";
+import VexCamera from "../objects/VexCamera.js";
+import VexTween from "../utils/tweens/VexTween.js";
+import VexTimer from "../utils/timer/VexTimer.js";
 
 /**
  * @file VexGame.js
@@ -90,9 +91,10 @@ export default class VexGame {
     VexGlobal.elapsed = dt;
     if (VexGlobal.state) VexGlobal.state.update(dt);
     VexGlobal.camera.update(dt);
-    VexTween.updateTweens(dt);
     VexGlobal.keys._endFrame();
     VexGlobal.mouse._endFrame();
+    VexTween.updateTweens(dt);
+    VexTimer.globalManager.update(dt);
   }
 
   _draw() {

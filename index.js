@@ -12,6 +12,8 @@ export { default as VexSprite } from "./source/objects/VexSprite.js";
 export { default as VexSound } from "./source/sound/VexSound.js";
 export { default as VexText } from "./source/text/VexText.js";
 export { default as VexTilemap } from "./source/objects/tile/VexTilemap.js";
+export { default as VexTimer } from "./source/utils/timer/VexTimer.js";
+export { default as VexTimerManager } from "./source/utils/timer/VexTimerManager.js";
 export { default as VexEase } from "./source/utils/tweens/VexEase.js";
 export { default as VexTween } from "./source/utils/tweens/VexTween.js";
 export { default as VexSignal } from "./source/utils/VexSignal.js";
