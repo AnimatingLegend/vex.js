@@ -114,7 +114,7 @@ export default class VexTimer {
 
     // Allows: await VexTimer.wait(1);
     return new Promise((resolve) => {
-      new VexTimer().start(time, resolve, 1);
+      new VexTimer().start(time, () => resolve(), 1);
     });
   }
 
