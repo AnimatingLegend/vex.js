@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://www.npmjs.com/package/@aaronaugustin/vex.js"><img src="https://img.shields.io/npm/v/@aaronaugustin/vex.js.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@animatinglegend/vex.js"><img src="https://img.shields.io/npm/v/@animatinglegend/vex.js.svg" alt="npm version"></a>
   <a href="docs/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
 </p>
 </div>
@@ -30,7 +30,7 @@
 Install via NPM:
 
 ```bash
-npm install @aaronaugustin/vex.js
+npm install @animatinglegend/vex.js
 ```
 
 Or import directly in modern browsers via native ES Modules:
