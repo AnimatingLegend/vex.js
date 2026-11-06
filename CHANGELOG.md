@@ -5,6 +5,19 @@ All notable changes to Vex.js are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - [2026-11-05]
+
+**ACTUAL** NPM RELEASE
+
+### Added
+
+- `CI`: Added GitHub Actions workflow to automatically publish package releases to NPM upon release creation.
+
+### Changed
+
+- `Package`: Scoped package name to `@animatinglegend/vex.js` in `package.json`.
+- `Chore`: Updated repository clone/installation links in README & CONTRIBUTING docs.
+
 ## [1.1.0] - [2026-11-05]
 
 OFFICIAL NPM RELEASE!
