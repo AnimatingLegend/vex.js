@@ -16,8 +16,8 @@ Before you begin, make sure you have these things first.
 Run the following commands in your terminal to fork Vex's Repository:
 
 ```bash
-git clone https://github.com/AnimatingLegend/VexJS.git
-cd VexJS
+git clone https://github.com/AnimatingLegend/vex.js.git
+cd vex.js
 ```
 
 ## Project Dependencies

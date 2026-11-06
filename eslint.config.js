@@ -12,7 +12,7 @@ export default [
     },
   },
   {
-    files: ["source/VexBasic.js"],
+    files: ["source/core/VexBasic.js"],
     rules: {
       "no-unused-vars": ["error", { args: "none" }],
     },

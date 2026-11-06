@@ -22,7 +22,7 @@ body:
     attributes:
       label: Version
       description: Which version are you running?
-      placeholder: "ex. 1.0.0 or develop-v1.1.0"
+      placeholder: "ex. 1.1.0 or vexjs/develop-branch"
     validations:
       required: true
 

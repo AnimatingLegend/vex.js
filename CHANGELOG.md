@@ -5,6 +5,68 @@ All notable changes to Vex.js are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - [2026-11-05]
+
+OFFICIAL NPM RELEASE!
+
+### Added
+
+- `VexObject`: New base class for motion and collision. `VexSprite` and `VexText` now extend it.
+  - `VexObject.collide(a, b)` resolves overlaps using the new `last`, `touching`, and `immovable` fields.
+  - `screenCenter()` centers an object on the X/Y axis.
+  - `containsPoint(x, y)` checks whether a point, or an object with `x` and `y`, is inside an object.
+- `VexAtlas`: New class for loading sprite atlases from Sparrow `.xml` and TexturePacker `.json` files, cached by path.
+- `VexTimer`: New class that can delay and repeating timers with loops, countdown getters, pausing, and a static `wait()`.
+- `VexTimerManager`: New class that manages and updates active timers.
+  - `VexTimer.globalManager` is updated by `VexGame` every frame.
+- `VexGlobal`: `mouse._overlaps(target)` helper for mouse hit checks.
+- `VexAnimationController`: `setFrames()`, `addByPrefix()`, and `addByIndices()` for animating from atlas frames.
+- `VexSprite`: `frames` getter and setter, and atlas trim offsets (`offsetX`, `offsetY`) applied when drawing.
+- `VexSprite`: `flipX` and `flipY` for mirroring, and chainable `setPosition()` and `setSize()`.
+- `VexEmitter`: Configurable, pooled particle bursts with `burstParticle()`, speed ranges, gravity, auto-fade, and a pool size limit.
+- `VexEmitter`: Color customization for particles.
+- `VexTween`: `sineIn`, `sineOut`, `sineInOut`, and `bounceOut` easing curves.
+- `VexText`: Chainable builder methods:
+  - `setColor()`
+  - `setFont()`
+  - `setBold()`
+  - `setAlpha()`
+  - `setAlign()`
+- `VexSignal`: `hasListeners` getter.
+- `VexGame`: `container` option, used to create and attach a canvas when none is found.
+- `Demo`: Endless runner demo. ([`04b490f`](https://github.com/AnimatingLegend/vex.js/commit/04b490f41130679e3222866d6c8957ca39805135)) - by @F4LDR in [#4](https://github.com/AnimatingLegend/vex.js/pull/4)
+- `Demo`: Tween demo comparing the new easing curves side by side.
+- `Docs`: User documentation in `docs/` with a getting started guide, concepts, an API reference, and how-to guides. ([`0c8c33c`](https://github.com/AnimatingLegend/vex.js/commit/0c8c33cbfb598d4ce2124d39c5db968cf1eeb926)) - by @AaronAugustin & @AnimatingLegend in [#5](https://github.com/AnimatingLegend/vex.js/pull/5).
+  - `Docs`: README with features, installation, a quick start, a demo catalog, and API documentation.
+- `Package`: `exports` map and expanded keywords for discoverability.
+- `Package`: `docs/` included in the published files.
+- `Tests`: Unit tests for `VexTimer` and `VexTimerManager`.
+
+### Changed
+
+- **Breaking:** `Source`: Reorganized `source/` into `core/` (`VexGame`, `VexState`, `VexBasic`, `VexGlobal`), `objects/` (entities and animation), and `utils/` (utilities and tweens).
+  - `Demo`: Updated the `VexGame` import paths across the test demos.
+  - The `index.js` exports are updated.
+- **Breaking:** `VexSprite`: `loadGraphic()` is now synchronous and returns the sprite immediately so it can be chained.
+- `VexTween`: Easing functions moved into a separate `VexEase` module. (NOTE: `VexTween.Easing` still works.)
+- `VexSound`: `VexGlobal.playSound()` no longer builds a sound with `null` audio first.
+- `VexEmitter`: Fade easing uses `VexEase` directly.
+- `Demo`: Complete Gameplay demo rewrite:
+  - WASD alongside the arrow keys + Shift to sprint
+  - HUD control instructions
+  - A landing dust effect
+  - Platform collision through `VexObject.collide()`
+  - And a cleaner level and HUD structure.
+- `Demo`: Text demo updated to use the builder methods & generic point checks.
+- `Docs`: Refreshed the code snippets in the style guide.
+
+### Fixed
+
+- `VexGroup`: `recycle()` now revives the dead members it reuses, making recycled particles and pooled objects update and render again.
+- `VexEmitter`: Fixed the value `emit()` returns, `autoFade` scaling, and the `fadeParticle()` tween.
+
+---
+
 ## [1.0.3] - [2026-10-07]
 
 ### Added
