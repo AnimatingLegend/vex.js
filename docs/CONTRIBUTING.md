@@ -38,7 +38,7 @@ npm install
 
 ### Included Dependencies:
 
-`@eslint/js`, `eslint`, `globals`, `prettier`, `serve`, `vitest`.
+`@eslint/js`, `electron`, `eslint`, `globals`, `prettier`, `serve`, `vitest`.
 
 ## Create a new branch
 

@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  color: #ffff;
+}
+
+.screen_top {
+  padding: 20px;
+  font-size: 15px;
+}
+
+.screen_middle_bottom {
+  font-size: 15px;
+}
+
+.title,
+.title_desc,
+.desc {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
