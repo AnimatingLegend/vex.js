@@ -39,8 +39,10 @@
     "vexjs"
   ],
   "scripts": {
-    "dev": "serve .",
     "start": "serve .",
+    "start:desktop": "electron ./desktop/electron.js",
+    "dev": "serve .",
+    "dev:desktop": "electron ./desktop/electron.js",
     "fmt": "prettier --write .",
     "fmt:check": "prettier --check .",
     "lint": "eslint .",
@@ -48,6 +50,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "electron": "^45.2.3",
     "eslint": "^10.11.0",
     "globals": "^17.12.0",
     "prettier": "^3.9.9",

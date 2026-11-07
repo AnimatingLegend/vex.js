@@ -14,6 +14,7 @@ export default class VexGame {
     width = 640,
     height = 480,
     canvas = null,
+    isDesktop = false,
     container = null,
     initialState,
     framerate = 60,
@@ -28,6 +29,12 @@ export default class VexGame {
           : container;
       if (parent) parent.appendChild(this.canvas);
     }
+
+    const detectedDesktop =
+      typeof navigator !== "undefined" && /electron/i.test(navigator.userAgent);
+    this.isDesktop = isDesktop || detectedDesktop;
+    VexGlobal.isDesktop = this.isDesktop;
+
     this.ctx = this.canvas.getContext("2d");
 
     VexGlobal.width = width;
@@ -61,11 +68,19 @@ export default class VexGame {
     this._running = true;
     this._lastTime = performance.now();
     requestAnimationFrame(this._loop.bind(this));
+
+    if (this.isDesktop) {
+      console.log("[ELECTRON] Desktop window initialized");
+    }
   }
 
   // Let the pending animation frame exit without scheduling another one.
   stop() {
     this._running = false;
+
+    if (this.isDesktop) {
+      console.log("[ELECTRON] Closing desktop window");
+    }
   }
 
   // Run fixed simulation steps while rendering once for each browser frame.

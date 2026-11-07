@@ -12,6 +12,7 @@ const VexGlobal = {
   camera: null,
   state: null,
   elapsed: 0,
+  isDesktop: false,
 
   keys: {
     _down: new Set(),
