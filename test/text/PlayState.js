@@ -17,31 +17,33 @@ export default class PlayState extends VexState {
     this.descText = new VexText(100, 100, "Click on the block!")
       .setFont("20px Courier New")
       .setBold(true)
-      .setColor("#ffffff");
-    this.descText.screenCenter();
+      .setColor("#ffffff")
+      .screenCenter();
     this.descText.x = 200;
     this.descText.y = 110;
     this.add(this.descText);
 
     this.block = new VexSprite()
-      .makeGraphic("#ffffff")
-      .setPosition(255, 180)
-      .setSize(120, 120);
+      .makeGraphic(120, 120, "#ffffff")
+      .screenCenter();
     this.add(this.block);
 
     this.scoreText = new VexText(100, 100, "Score: 0")
       .setFont("20px Courier New")
       .setBold(true)
-      .setColor("#ffffff");
-    this.scoreText.screenCenter();
+      .setColor("#ffffff")
+      .screenCenter();
     this.scoreText.x = 250;
     this.scoreText.y = 350;
     this.add(this.scoreText);
 
-    this.score = 0;
-
     this.particles = new VexEmitter(0, 0);
     this.add(this.particles);
+
+    this.score = 0;
+
+    this.holdTimer = 0;
+    this.holdInterval = 0.2; // Particles trigger every 0.2s when held.
   }
 
   update(dt) {
@@ -54,11 +56,9 @@ export default class PlayState extends VexState {
       if (VexGlobal.mouse.justPressed || this.holdTimer >= this.holdInterval) {
         this.particles.x = VexGlobal.mouse.x;
         this.particles.y = VexGlobal.mouse.y;
-        // pi = particle index
-        for (let pi = 0; pi < 8; pi++) {
-          this.particles.emit();
-          this.particles.fadeParticle(0, 2, () => console.log("fade complete"));
-        }
+
+        this.particles.burstParticle(8);
+        this.particles.fadeParticle(0, 2, () => console.log("fade complete"));
 
         this.score += 20;
         this.scoreText.setText(`Score: ${this.score}`);
