@@ -2,8 +2,7 @@
 node_modules/
 
 # Documentation
-docs/GEMINI.md
-docs/MILESTONE.md
+docs/CHANGELOG.TODO.md
 
 # Editor
 .idea/
