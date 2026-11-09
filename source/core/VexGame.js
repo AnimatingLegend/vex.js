@@ -34,6 +34,14 @@ export default class VexGame {
     VexGlobal.height = height;
     VexGlobal.camera = new VexCamera(width, height);
 
+    if (
+      typeof framerate !== "number" ||
+      framerate <= 0 ||
+      Number.isNaN(framerate)
+    ) {
+      throw new Error(`[VEX GAME] Framerate must be a positive number.`);
+    }
+
     this.step = 1 / framerate;
     this._accumulator = 0;
     this._lastTime = 0;
