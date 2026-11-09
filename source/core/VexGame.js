@@ -58,6 +58,8 @@ export default class VexGame {
 
   // Reset the clock so restarting does not simulate time spent while stopped.
   start() {
+    if (this._running) return;
+
     this._running = true;
     this._lastTime = performance.now();
     requestAnimationFrame(this._loop.bind(this));
