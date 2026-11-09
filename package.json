@@ -42,7 +42,7 @@
     "start": "serve .",
     "start:desktop": "electron ./desktop/electron.js",
     "dev": "serve .",
-    "dev:desktop": "electron ./desktop/electron.js",
+    "dev:desktop": "electron ./desktop/electron.js --dev",
     "fmt": "prettier --write .",
     "fmt:check": "prettier --check .",
     "lint": "eslint .",
