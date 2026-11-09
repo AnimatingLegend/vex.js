@@ -2,7 +2,7 @@
 
 Loads sprite atlas data, which describes where each frame sits on a packed image, and turns it into a list of frames. It reads Sprraow XML (`.xml`) and TexturePacker JSON (`.json`).
 
-Connecting atlas frames to `VexAnimationController` isn't available yet, but planned!
+To animate a sprite with an atlas, assign it with `sprite.frames = atlas`. See **[`VexAnimationController`](./VexAnimationController.md)** and the "**[Sprite Atlases guide](../GUIDES/sprite-atlases.md)**".
 
 ## Functions
 

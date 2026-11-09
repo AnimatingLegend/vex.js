@@ -19,7 +19,7 @@ Extends **[`VexGroup.js`](VexGroup.md)**.
 | `speedY`           | `{min, max}` | `{-200, -50}`        | Range of vertical speed. Negative is upward.                                                                   |
 | `particleColor`    | string       | `"#ffaa00"`          | Color of new particles.                                                                                        |
 | `particleLifeSpan` | number       | `0.6`                | How long each particle lives, in seconds.                                                                      |
-| `particleAlpha`    | number       | `1`                  | Opacity of new particles. It only has a lasting effect when `autoFade` is off.                                 |
+| `particleAlpha`    | number       | `1`                  | Opacity of new particles.                                                                                      |
 | `particleAge`      | number       | `0`                  | Starting age of new particles. Rarely needs changing.                                                          |
 | `particleGravity`  | number       | `400`                | Downward acceleration in pixels per second squared. Set it to `0` for particles that drift in a straight line. |
 | `autoFade`         | boolean      | `true`               | Fades each particle from opaque to transparent over its lifespan.                                              |
@@ -27,11 +27,11 @@ Extends **[`VexGroup.js`](VexGroup.md)**.
 
 ## Methods
 
-- **`emit()`**: Spawns one particle at the emitter's position with a random velocity inside `speedX` and `speedY`. The particle is killed after `particleLifeSpan` seconds and reused by later calls. If the emitter has a `maxSize` and every particle is alive, nothing is spawned and `null` is returned.
+- **`emit()`**: Spawns one particle at the emitter's position with a random velocity inside `speedX` and `speedY`. The particle is killed after `particleLifeSpan` seconds and reused by later calls. If the emitter has a `maxSize` and every particle is alive. Returns a spawned `VexSprite` particle (or `null` if the pool is capped).
 
 - **`burstParticle(count = 10)`**: Calls `emit()` `count` times. Use it for explosions, dust, and sparks.
 
-- **`fadeParticle(particleAlpha = 1, particleDuration = 1, onComplete = null)`**: Tweens the alpha of the most recently emitted particle toward `particleAlpha` over `particleLifeSpan` seconds, replacing any tween already on it. Call it right after `emit()`. `particleDuration` is currently unused. `onComplete` runs when the tween finishes.
+- **`fadeParticle(particleAlpha = 1, particleDuration = 1, onComplete = null)`**: Tweens the alpha of the most recently emitted particle toward `particleAlpha` over `particleLifeSpan` seconds, replacing any tween already on it. Call it right after `emit()`. `particleDuration` is used as the tween/particle duration, and `onComplete` runs when the tween finishes.
 
 - **`update(dt)`**: Ages every living particle, applies `autoFade`, and kills the particles that have expired. Called by the engine.
 

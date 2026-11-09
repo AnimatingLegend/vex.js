@@ -40,7 +40,7 @@ Assigning `frames` sizes the sprite to the first frame's original size and shows
 ```js
 this.hero.animation.addByPrefix("idle", "hero_idle_anim", 24, true);
 this.hero.animation.addByPrefix("run", "hero_run_anim", 24, true);
-this.hero.animation.addByPrefix("jump". "hero_jump_anim", 24, false);
+this.hero.animation.addByPrefix("jump", "hero_jump_anim", 24, false);
 ```
 
 Frames play in the order they appear in the atlas. A prefix matches the start of the name, so `"idle"` also matches `"hero_idle_anim0000"`. Make prefixes specific enough to match only what you want.

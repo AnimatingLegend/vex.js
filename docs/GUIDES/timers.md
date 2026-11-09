@@ -5,7 +5,7 @@ How to run code after a delay, repeat it on a schedule, show a countdown, and pa
 ## Run something after a delay:
 
 ```js
-new VexTimer().start(1.5 () => {
+new VexTimer().start(1.5, () => {
   this.door.kill();
 });
 ```
@@ -50,7 +50,7 @@ Read `timeRemaining` and `progress` from the timer in your `update()`:
 
 ```js
 create() {
-  this.tmr = new new VexTimer().start(10, () => this._gameOver());
+  this.tmr = new VexTimer().start(10, () => this._gameOver());
 }
 
 update(dt) {
@@ -77,6 +77,9 @@ async startIntro() {
 ```
 
 If the state switches while a wait is pending, the timer is cancelled and the code after the `await` never runs. That keeps your code from touching a destroyed state.
+
+> [!NOTE]
+> `await VexTimer.wait(time)` resolves when the delay completes.
 
 ## Pause n' Resume:
 

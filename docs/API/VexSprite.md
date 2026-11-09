@@ -33,6 +33,18 @@ Extends [`VexObject`](./VexObject.md), and the motion properties and methods bel
 
 ### Appearance
 
+| Name             | Type                     | Default     | Description                                                                                                                                                  |
+| ---------------- | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `scale`          | `{x, y}`                 | `{1, 1}`    | Size multiplier.                                                                                                                                             |
+| `flipX`, `flipY` | boolean                  | `false`     | Mirror the sprite horizontally or vertically.                                                                                                                |
+| `alpha`          | number                   | `1`         | Opacity from 0 to 1.                                                                                                                                         |
+| `scrollFactor`   | `{x, y}`                 | `{1, 1}`    | How much the camera moves the sprite. `0` stays fixed on screen.                                                                                             |
+| `offset`         | `{x, y}`                 | `{0, 0}`    | Shifts where the sprite is drawn without moving its position.                                                                                                |
+| `color`          | string                   | `"#ffffff"` | Fill color used when there's no image.                                                                                                                       |
+| `image`          | HTMLImageElement         | `null`      | The loaded image.                                                                                                                                            |
+| `animation`      | `VexAnimationController` |             | Shortcut for `animationController`.                                                                                                                          |
+| `frames`         | array                    | `[]`        | The sprite's frame records. Assigning a **[`VexAtlas`](VexAtlas.md)** (or an array of frames) uses it for animation and sizes the sprite to the first frame. |
+
 ## Methods
 
 - **`makeGraphic(width, height, color = "#ffffff")`**: Gives the sprite a solid rectangle. Returns `this`.
