@@ -40,6 +40,22 @@ export default class VexAnimationController {
   }
 
   /**
+   * Give the character a frame name, get its indices, set the framerate of the animation,
+   *  and determine whether the animation is looped.
+   *
+   * Usage:
+   * `VexAnimationController.addByFrame("hero_run_anim", [ 0, 1, 2, 3 ], 12, true)`
+   *
+   * @param {string} name - Your custom frame name.
+   * @param {Array[Number]} frameIndices - An index of frames that you want to include.
+   * @param {Number} [framerate=30] - Playback speed in frames per second.
+   * @param {boolean} [loop=true] - Whether the animation repeats when it finishes.
+   */
+  addByFrame(name, frameIndices, framerate = 30, looped = true) {
+    this._animations.set(name, { frames: frameIndices, framerate, looped });
+  }
+
+  /**
    * Assigns an atlas, or an array of frame records to this controller.
    *
    * Usage:

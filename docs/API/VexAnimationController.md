@@ -20,10 +20,10 @@ Frames come from one of two places:
 | ----------- | -------------------------------- |
 | `name`      | The name you'll play it by.      |
 | `frames`    | An array of frame numbers.       |
-| `frameRate` | Frames per second.               |
+| `framerate` | Frames per second.               |
 | `looped`    | Whether to repeat the animation. |
 
-- **`add(name, frame, frameRate = 12, looped = true)`**: Defines an animation from a list of frame numbers.
+- **`addByFrame(name, frameIndices, framerate = 12, looped = true)`**: Defines a spritesheet (or animation) from a list of frame numbers.
 
 - **`addByPrefix()`**: Defines an animation from every atlas frame whose name starts with "`prefix`"., in the order they appear in the atlas:
 
