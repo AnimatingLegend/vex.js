@@ -31,7 +31,7 @@ export default class VexTimer {
 
   // Returns the progress of the timer as a value between 0 and 1.
   get progress() {
-    return this.time > 0 ? Math.min(1, this._timeCounter / this.time) : 0;
+    return this.time > 0 ? Math.min(1, this._timeCounter / this.time) : 1;
   }
 
   // Returns the number of loops remaining.
@@ -69,7 +69,7 @@ export default class VexTimer {
    * @returns {VexTimer} The timer instance for chaining.
    */
   start(time = 1, onComplete = null, loops = 1) {
-    this.time = Math.abs(time);
+    this.time = Math.max(0, Number(time) || 0);
     this.onComplete = onComplete;
     this.loops = Math.max(0, loops);
 
@@ -88,8 +88,10 @@ export default class VexTimer {
    * @param {Number} newTime - The new time to count down from.
    * @returns {VexTimer} The timer instance for chaining.
    */
-  reset(newTime = -1) {
-    if (newTime >= 0) this.time = newTime;
+  reset(newTime = null) {
+    if (newTime !== null && newTime !== undefined) {
+      this.time = Math.max(0, Number(newTime) || 0);
+    }
 
     this.active = true;
     this.finished = false;
@@ -133,6 +135,30 @@ export default class VexTimer {
   update(dt) {
     if (!this.active || this.finished) return;
 
+    // Handle 0 and negative duration safely without infinite loops.
+    if (this.time <= 0) {
+      if (this.loops === 0) {
+        this.elapsedLoops++;
+        if (this.onComplete) this.onComplete(this);
+        this._timeCounter = 0;
+        return;
+      }
+
+      while (this.active && !this.finished) {
+        this.elapsedLoops++;
+        if (this.onComplete) this.onComplete(this);
+
+        if (this.loops > 0 && this.elapsedLoops >= this.loops) {
+          this.finished = true;
+          this.cancel();
+          break;
+        }
+      }
+      this._timeCounter = 0;
+      return;
+    }
+
+    // Normal update when `this.time > 0`.
     this._timeCounter += dt;
 
     while (this._timeCounter >= this.time && this.active && !this.finished) {
