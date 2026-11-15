@@ -31,7 +31,7 @@ export default class PlayState extends VexState {
     // Add a little camera fade-in effect when spawning.
     VexGlobal.camera.fade("#000000", 0.5, true);
     // Follow the player when moving.
-    VexGlobal.camera.follow(this.player, { mode: "lerp", lerp: 0.05 });
+    VexGlobal.camera.follow(this.player, { mode: "lerp", lerp: 0.1 });
 
     // Initialize the game level.
     this._buildLevel();
@@ -108,7 +108,6 @@ export default class PlayState extends VexState {
     if (!wasGrounded && player.touching.down && fallSpeed > 100)
       this._landingEffect();
 
-    VexGlobal.camera.update(dt);
     // If the players gravity exceeds 1000, respawn the player back to its original place.
     if (player.y > 1000) {
       VexGlobal.camera.fade("#000000", 0.5, true);

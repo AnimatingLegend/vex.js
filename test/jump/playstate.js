@@ -30,7 +30,7 @@ export default class PlayState extends VexState {
     this.playerSpawn = { x: this.player.x, y: this.player.y };
     this.add(this.player);
 
-    VexGlobal.camera.follow(this.player, { mode: "lerp", lerp: 0.05 });
+    VexGlobal.camera.follow(this.player, { mode: "lerp", lerp: 0.1 });
   }
 
   _buildHUD() {
@@ -80,7 +80,6 @@ export default class PlayState extends VexState {
 
   update(dt) {
     super.update(dt);
-    VexGlobal.camera.update(dt);
 
     var player = this.player;
     player.acceleration.y = this.gravity;
