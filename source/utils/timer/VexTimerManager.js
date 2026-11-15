@@ -34,4 +34,9 @@ export default class VexTimerManager extends VexBasic {
     for (const timer of [...this.timers]) timer.cancel();
     this.timers.length = 0;
   }
+
+  destroy() {
+    super.destroy();
+    this.clear();
+  }
 }

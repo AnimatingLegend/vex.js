@@ -1,5 +1,6 @@
 import VexBasic from "./VexBasic.js";
 import VexGroup from "../objects/VexGroup.js";
+import VexTween from "../utils/tweens/VexTween.js";
 
 /**
  * @file VexState.js
@@ -29,7 +30,13 @@ export default class VexState extends VexBasic {
 
   // Give menus and overlays their own lifecycle without replacing the parent state.
   openSubState(subState) {
+    if (this.subState === subState) return;
+    // Cleanly close previous substate is one was already open.
+    if (this.subState) this.closeSubState();
+
+    if (!subState) return;
     this.subState = subState;
+    subState.parentState = this;
     subState.create();
   }
 
@@ -52,11 +59,22 @@ export default class VexState extends VexBasic {
     if (this.subState) this.subState.draw(ctx, camera);
   }
 
+  cancelTweens(object) {
+    if (!object) return;
+
+    VexTween.cancelTweensOf(object);
+    if (object._group) this.cancelTweens(object._group);
+    if (Array.isArray(object.members)) {
+      for (const member of object.members) this.cancelTweens(member);
+    }
+  }
+
   destroy() {
     if (this.subState) {
       this.subState.destroy();
       this.subState = null;
     }
+    this.cancelTweens(this);
     this._group.destroy();
   }
 }
