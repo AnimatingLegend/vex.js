@@ -43,18 +43,33 @@ const VexGlobal = {
   },
 
   mouse: {
-    x: 0,
-    y: 0,
+    screenX: 0,
+    screenY: 0,
     pressed: false,
     justPressed: false,
     justReleased: false,
+
+    // World X position under the cursor
+    get x() {
+      const camera = VexGlobal.camera;
+      return camera
+        ? camera.scroll.x + this.screenX / camera.zoom
+        : this.screenX;
+    },
+    // World Y position under the cursor
+    get y() {
+      const camera = VexGlobal.camera;
+      return camera
+        ? camera.scroll.y + this.screenY / camera.zoom
+        : this.screenY;
+    },
 
     _onMove(e, canvas) {
       const rect = canvas.getBoundingClientRect();
       const scaleX = canvas.width / rect.width;
       const scaleY = canvas.height / rect.height;
-      this.x = (e.clientX - rect.left) * scaleX;
-      this.y = (e.clientY - rect.top) * scaleY;
+      this.screenX = (e.clientX - rect.left) * scaleX;
+      this.screenY = (e.clientY - rect.top) * scaleY;
     },
     _onDown() {
       this.pressed = true;
@@ -65,7 +80,25 @@ const VexGlobal = {
       this.justReleased = true;
     },
     _overlaps(target) {
-      return target.containsPoint(this.x, this.y);
+      if (!target) return false;
+
+      const camera = VexGlobal.camera;
+      let testX = this.x;
+      let testY = this.y;
+
+      if (camera && target.scrollFactor) {
+        const factorX = target.scrollFactor.x ?? 1;
+        const factorY = target.scrollFactor.y ?? 1;
+
+        // Transform mouse to target's coordinate space based on its scrollFactor & zoom
+        testX = camera.scroll.x * factorX + this.screenX / camera.zoom;
+        testY = camera.scroll.y * factorY + this.screenY / camera.zoom;
+      }
+
+      return target.containsPoint(testX, testY);
+    },
+    overlaps(target) {
+      return this._overlaps(target);
     },
     _endFrame() {
       this.justPressed = false;
