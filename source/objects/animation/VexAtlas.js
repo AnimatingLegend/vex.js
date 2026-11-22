@@ -137,10 +137,10 @@ export default class VexAtlas {
       : Object.entries(data.frames);
 
     entries.forEach(([name, file]) => {
-      const trim = file.spriteSouceSize || { x: 0, y: 0 };
+      const trim = file.spriteSourceSize || { x: 0, y: 0 };
       const source = file.sourceSize || {
         w: file.frame.w,
-        h: file.frame.height,
+        h: file.frame.h,
       };
 
       this.frames.push(
@@ -154,7 +154,7 @@ export default class VexAtlas {
           trim.x,
           trim.y,
           source.w,
-          source.y,
+          source.h,
         ),
       );
     });
