@@ -150,10 +150,14 @@ const VexGlobal = {
   // Cache the in-flight promise so concurrent requests share one image load.
   async loadImage(path) {
     if (this._imageCache.has(path)) return this._imageCache.get(path);
+
     const img = new Image();
     const promise = new Promise((resolve, reject) => {
       img.onload = () => resolve(img);
-      img.onerror = reject;
+      img.onerror = (err) => {
+        this._imageCache.delete(path);
+        reject(err); // Evict from cache on failure.
+      };
     });
     img.src = path;
     this._imageCache.set(path, promise);

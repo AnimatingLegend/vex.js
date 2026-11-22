@@ -22,7 +22,10 @@ export default class VexAtlas {
   static async load(dataPath) {
     if (atlasCache.has(dataPath)) return atlasCache.get(dataPath);
 
-    const promise = VexAtlas._fetchAndParse(dataPath);
+    const promise = VexAtlas._fetchAndParse(dataPath).catch((err) => {
+      atlasCache.delete(dataPath); // Evict from cache on failure.
+      throw err;
+    });
     atlasCache.set(dataPath, promise);
     return promise;
   }
