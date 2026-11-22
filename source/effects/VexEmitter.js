@@ -60,12 +60,12 @@ export default class VexEmitter extends VexGroup {
    * @param {Number} particleDuration - How long a particle stays visible.
    */
   fadeParticle(particleAlpha = 1, particleDuration = 1, onComplete = null) {
+    if (!this.particle) return;
     VexTween.cancelTweensOf(this.particle);
-    VexTween.tween(
+    return VexTween.tween(
       this.particle,
       { alpha: particleAlpha },
       particleDuration,
-      this.particleLifeSpan,
       {
         ease: VexEase.quadOut,
         onComplete,
