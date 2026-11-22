@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.1] - [2026-11-05]
 
-**ACTUAL** NPM RELEASE
+**Urgent** hotfix update for NPM releases
 
 ### Added
 
@@ -22,11 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - [2026-11-05]
 
-OFFICIAL NPM RELEASE!
+**OFFICIAL** NPM RELEASE!
 
 ### Added
 
-- `VexObject`: New base class for motion and collision. `VexSprite` and `VexText` now extend it.
+- `VexObject`: New base class for motion and collision.
+  - `VexSprite` and `VexText` now extend it.
   - `VexObject.collide(a, b)` resolves overlaps using the new `last`, `touching`, and `immovable` fields.
   - `screenCenter()` centers an object on the X/Y axis.
   - `containsPoint(x, y)` checks whether a point, or an object with `x` and `y`, is inside an object.
@@ -40,7 +41,11 @@ OFFICIAL NPM RELEASE!
 - `VexSprite`: `flipX` and `flipY` for mirroring, and chainable `setPosition()` and `setSize()`.
 - `VexEmitter`: Configurable, pooled particle bursts with `burstParticle()`, speed ranges, gravity, auto-fade, and a pool size limit.
 - `VexEmitter`: Color customization for particles.
-- `VexTween`: `sineIn`, `sineOut`, `sineInOut`, and `bounceOut` easing curves.
+- `VexEase` [**TWEENS**]: Implemented the following easing curves:
+  - `sineIn`
+  - `sineOut`
+  - `sineInOut`
+  - `bounceOut`
 - `VexText`: Chainable builder methods:
   - `setColor()`
   - `setFont()`
@@ -59,10 +64,10 @@ OFFICIAL NPM RELEASE!
 
 ### Changed
 
-- **Breaking:** `Source`: Reorganized `source/` into `core/` (`VexGame`, `VexState`, `VexBasic`, `VexGlobal`), `objects/` (entities and animation), and `utils/` (utilities and tweens).
+- `Source` [**BREAKING**]: Complete `source/` overhaul. ([**READ MORE ON THE DIRECTORY HERE**](./docs/README.md))
   - `Demo(s)`: Updated the `VexGame` import paths across the test demos.
   - The `index.js` exports are updated.
-- **Breaking:** `VexSprite`: `loadGraphic()` is now synchronous and returns the sprite immediately so it can be chained.
+- `VexSprite` [**BREAKING**]: `loadGraphic()` is now synchronous and returns the sprite immediately so it can be chained.
 - `VexTween`: Easing functions moved into a separate `VexEase` module. (NOTE: `VexTween.Easing` still works.)
 - `VexSound`: `VexGlobal.playSound()` no longer builds a sound with `null` audio first.
 - `VexEmitter`: Fade easing uses `VexEase` directly.
