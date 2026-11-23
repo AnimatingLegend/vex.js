@@ -81,7 +81,11 @@ export default class VexText extends VexObject {
     ctx.fillStyle = this.color;
     ctx.textAlign = this.align;
     ctx.textBaseline = "top";
-    ctx.fillText(this.text, sx, sy);
+    const lines = String(this.text).split("\n");
+    const lineHeight = parseInt(this.font, 10) || 16;
+    lines.forEach((line, i) => {
+      ctx.fillText(line, sx, sy + i * (lineHeight + 4));
+    });
     ctx.restore();
   }
 }
