@@ -37,11 +37,12 @@ Every `VexClass`, with its properties and methods:
 
 ### Objects
 
-- **[`VexSprite`](./API/VexSprite.md)**: A moveable, or drawable Object.
-- **[`VexObject`](./API/VexSprite.md)**: Motion & Collision base class.
-- **[`VexText`](./API/VexText.md)**: Text on the Game Canvas.
 - **[`VexAnimationController`](./API/VexAnimationController.md)**: Frame Animation.
 - **[`VexAtlas`](./API/VexAtlas.md)**: Sprite Atlas loading.
+- **[`VexText`](./API/VexText.md)**: Text on the Game Canvas.
+- **[`VexObject`](./API/VexSprite.md)**: Motion & Collision base class.
+- **[`VexSprite`](./API/VexSprite.md)**: A moveable, or drawable Object.
+- **[`VexTilemap`](./API/VexTilemap.md)**: Tile maps from CSV data.
 
 ### World
 
@@ -52,9 +53,10 @@ Every `VexClass`, with its properties and methods:
 
 - **[`VexEmitter`](./API/VexEmitter.md)**: Particle Bursts.
 - **[`VexTween`](./API/VexTween.md)** / **[`VexEase`](./API/VexEase.md)**: Animating Properties over time.
-- **[`VexSignal`](./API/VexSignal.md)**: Events
-- **[`VexTimer`](./API/VexTimer.md)**:
-- **[`VexTimerManager`](./API/VexTimerManager.md)**:
+- **[`VexSound`](./API/VexSound.md)**: Music & Sound Effects.
+- **[`VexSignal`](./API/VexSignal.md)**: Events.
+- **[`VexTimer`](./API/VexTimer.md)**: Delays & repeating timers.
+- **[`VexTimerManager`](./API/VexTimerManager.md)**: The group of timers a game updates.
 
 ## [Guides](./GUIDES/)
 

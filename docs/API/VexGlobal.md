@@ -38,7 +38,7 @@ A single shared object for input, screen size, the camera, and the current state
 
 - **`loadImage(path)`**: Loads an image and returns a promise for it. Results are cached by path, so loading the same path again reuses the first request.
 
-- **`playSound(path, volume = 1)`**: Plays a sound effect and returns the sound instance. `volume` ranges from `0` - `1`.
+- **`playSound(path, volume = 1)`**: Plays a sound effect and returns the `VexSound` playing it. Each call creates a new sound, so effects and overlap. `volume` ranges from `0` - `1`.
 
 ### Example:
 
