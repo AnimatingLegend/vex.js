@@ -1,5 +1,5 @@
-import VexBasic from "../../core/VexBasic.js";
-import VexGlobal from "../../core/VexGlobal.js";
+import VexBasic from "../core/VexBasic.js";
+import VexGlobal from "../core/VexGlobal.js";
 
 /**
  * @file VexTilemap.js

@@ -1,4 +1,4 @@
-import VexBasic from "../core/VexBasic.js";
+import VexBasic from "../../core/VexBasic.js";
 
 /**
  * @file VexGroup.js

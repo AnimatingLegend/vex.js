@@ -1,7 +1,7 @@
-import VexEase from "../utils/tweens/VexEase.js";
-import VexTween from "../utils/tweens/VexTween.js";
-import VexGroup from "../objects/VexGroup.js";
-import VexSprite from "../objects/VexSprite.js";
+import VexEase from "../tweens/VexEase.js";
+import VexTween from "../tweens/VexTween.js";
+import VexGroup from "../../objects/world/VexGroup.js";
+import VexSprite from "../../objects/VexSprite.js";
 
 /**
  * @file VexEmitter.js

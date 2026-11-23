@@ -1,5 +1,5 @@
 import VexGlobal from "./VexGlobal.js";
-import VexCamera from "../objects/VexCamera.js";
+import VexCamera from "../objects/world/VexCamera.js";
 import VexTween from "../utils/tweens/VexTween.js";
 import VexTimer from "../utils/timer/VexTimer.js";
 

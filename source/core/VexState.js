@@ -1,5 +1,5 @@
 import VexBasic from "./VexBasic.js";
-import VexGroup from "../objects/VexGroup.js";
+import VexGroup from "../objects/world/VexGroup.js";
 import VexTween from "../utils/tweens/VexTween.js";
 
 /**

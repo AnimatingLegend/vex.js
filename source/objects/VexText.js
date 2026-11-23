@@ -1,4 +1,4 @@
-import VexObject from "../objects/VexObject.js";
+import VexObject from "./VexObject.js";
 
 /**
  * @file VexText.js

@@ -1,4 +1,4 @@
-import VexTween from "../utils/tweens/VexTween.js";
+import VexTween from "../tweens/VexTween.js";
 
 /**
  * @file VexSound.js

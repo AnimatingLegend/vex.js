@@ -1,4 +1,4 @@
-import VexSound from "../sound/VexSound.js";
+import VexSound from "../utils/sound/VexSound.js";
 
 /**
  * @file VexGlobal.js
