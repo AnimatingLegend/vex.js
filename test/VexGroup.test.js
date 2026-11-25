@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { VexGroup, VexBasic } from "../../index.js";
+import { VexGroup, VexBasic } from "../index.js";
 
 /**
  * @file VexGroup.test.js

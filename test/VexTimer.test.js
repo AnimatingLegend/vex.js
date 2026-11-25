@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { VexTimer } from "../../index.js";
+import { VexTimer } from "../index.js";
 
 /**
  * @file VexTimer.test.js
