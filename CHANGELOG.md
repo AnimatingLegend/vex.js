@@ -5,6 +5,66 @@ All notable changes to Vex.js are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - [2026-11-24]
+
+### Added
+
+- `Demo/Collision`: Add interactive visual collision resolution demo. It includes:
+  - Vertical & Horizontal Phasing
+  - Immovable & Mutual Displacement
+  - Edge Contact sliding
+  - Live touching contact HUD indicator
+- `Docs`: Added [`VexSound`](./API/VexSound.md) & [`VexTilemap`](./API/VexTilemap.md) API References.
+- `VexText`: Add multi-line support text rendering:
+
+### Changed
+
+- `Source` **[BREAKING]**: Organize subdirectories:
+  - Move `VexCamera` & `VexGroup` => `source/objects/world/`.
+  - Move `VexEmitter` => `source/utils/effects/`.
+  - Move `VexText` => `source/objects/`.
+  - Move `VexSound` => `source/utils/sound/`.
+  - Move `VexTilemap` => `source/objects/`.
+  - Update `index.js` exports & internal import paths.
+- `Docs/API`: Updated the following API references & Guide examples:
+  - Update [`VexAtlas`](./docs/API/VexAtlas.md) docs to reflect [`VexAnimationController`](./docs/API/VexAnimationController.md) integration.
+  - Add missing [#Appearance](./docs/API/VexSprite.md/#appearance) table in [`VexSprite`](./docs/API/VexSprite.md).
+  - Correct `VexEmitter.fadeParticle` duration and emit return value docs.
+  - Fix syntax errors and typos in [Sprite-Atlases](./docs/GUIDES/sprite-atlases.md) & [Timers](./docs/GUIDES/timers.md) guides.
+- `VexAnimationController`: Reimplemented `addByFrames` for regular spritesheets.
+- `VexGlobal.mouse`: Make hit testing consistent by implementing the following:
+  - Screen-space Input
+  - Camera-Scrolling / Camera-Zooming
+  - CSS Scaled Canvases
+- `VexState`: Enforce substate replacement & teardown behavior:
+  - Cancel all active tween's on destroyed states & group members.
+  - Clear `VexTimerManager` timers on state destruction.
+  - `openSubState` now cleanly closes existing substates before replacing them.
+
+### Fixed
+
+- `Demo/Text`: Fix `makeGraphic()` argument order & `holdTimer` integration:
+  - Pass `width`, `height`, & `color` properly for the block sprite.
+  - Properly initialize `holdTimer` & `holdInterval`.
+  - Use `burstParticle(8)` instead of hard-coding the emit loop.
+  - Chain `screenCenter()` on all elements.
+- `VexAtlas`: Read TexturePacker's `spriteSourceSize`, `frame.h` & `sourceSize.h` fields correctly to prevent trimmed offsets and source dimensions not being preserved.
+- `VexAtlas` / `VexGlobal`: Evict failed image & atlas request from their caches so later attempts can retry.
+- `VexEmitter`: Pass fade tween options using the supported signatures:
+  - Guard `fadeParticle` against calls when no particle has been emitted.
+  - Remove the `this.particleLifesSpan` argument so options (`ease` & `onComplete`) are received by `VexTween.tween`.
+- `VexGame`: Prevented repeated `start()` calls from scheduling multiple games loops.
+- `VexGame`: Reject non-positive framerates.
+- `VexTimer`: Handle zero / negative durations safely.
+- `VexTween`: Handle zero-durations safely + Guard active lists during updates.
+
+### Removed
+
+- `Demo(s)`: Remove duplicate `camera.update(dt)` calls from test scenes.
+- `VexGroup`: Remove debug logging from query methods.
+
+---
+
 ## [1.1.1] - [2026-11-05]
 
 **Urgent** hotfix update for NPM releases
