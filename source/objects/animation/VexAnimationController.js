@@ -95,7 +95,7 @@ export default class VexAnimationController {
         indices.push(index);
       }
     });
-    this.add(name, indices, framerate, looped);
+    this.addByFrame(name, indices, framerate, looped);
   }
 
   /**
@@ -135,7 +135,7 @@ export default class VexAnimationController {
     const frameIndices = indices
       .map((i) => matching[i])
       .filter((i) => i !== undefined);
-    this.add(name, frameIndices, framerate, looped);
+    this.addByFrame(name, frameIndices, framerate, looped);
   }
 
   /**
